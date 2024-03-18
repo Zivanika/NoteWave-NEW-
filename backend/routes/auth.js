@@ -143,9 +143,6 @@ router.post('/login',[
             return res.status(400).json({error:"User does not exist"})
         }
         const passwordcompare=await bcrypt.compare(password,user.password)
-        console.log(password);
-        console.log(user.password);
-        console.log(passwordcompare)
         if(!passwordcompare){
             return res.status(400).json({error:"Sorry wrong password!"})
         }
@@ -201,7 +198,6 @@ user.verified=true;
 await VerificationToken.findByIdAndDelete(token._id);
 // Saving the modified user data
 await user.save();
-console.log("Barnwol")
 const transporter=nodemailer.createTransport({
             service:"gmail",
             // host: "smtp.forwardemail.net",

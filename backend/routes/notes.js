@@ -6,7 +6,7 @@ const {body,validationResult}=require("express-validator")
 // ROUTE 1: Get all the notes using GET : /api/notes/fetchallnotes
 router.get("/fetchallnotes",fetchuser,async(req,res)=>{
     try{ const notes=await Notes.find({user:req.user.id})
-    res.json(notes)}
+    res.json({notes})}
    catch(error){
     console.log(error.message)
         res.status(500).send("Internal server error")
@@ -28,9 +28,9 @@ router.post("/addnote",fetchuser,[
         title,description,tag,user:req.user.id
     })
     const savednote=await note.save()
-    res.json(savednote)}
+    res.json({savednote})}
     catch(error){
-        console.log(error.message)
+        console.log(error)
         res.status(500).send("Internal server error")
     }
 })
@@ -64,6 +64,23 @@ router.put("/updatenote/:id",fetchuser,async(req,res)=>{
         res.status(500).send("Internal server error")
     }
 })
-
+// ROUTE 4: Delete an existing note using DELETE : /api/auth/deletenote . Login required
+router.delete("/deletenote/:id",fetchuser,async(req,res)=>{
+    try{
+    // Find the note to be deleted and delete it
+    let note=await Notes.findById(req.params.id);
+    if(!note){
+        return res.status(404).send("Note not found!")
+    }
+    // Allow deletion only if the user owns this note
+    if(note.user.toString()!==req.user.id){
+        return res.status(401).send("You are not the real user are you?")
+    }
+    note= await Notes.findByIdAndDelete(req.params.id)
+    res.json({"Success":"Note has been deleted"})}
+    catch(error){console.log(error.message)
+        res.status(500).send("Internal server error")
+    }
+})
 
 module.exports=router

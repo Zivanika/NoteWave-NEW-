@@ -28,6 +28,85 @@
   color: #61dafb;
 }
 
+@font-face {
+  font-family: Chopsic;
+  src: url("../src/fonts/Chopsic.otf");
+
+}
+@font-face {
+  font-family: Coolvetica;
+  src: url("../src/fonts/coolvetica.otf");
+  
+}
+.wrapper {
+  font-family: "Roboto", Arial, sans-serif;
+  width: 14rem;
+  max-width: 41.25rem;
+  /* margin: 0rem auto; */
+}
+.searchBar {
+  width: 15rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.719);
+}
+.box {
+  margin: 2px 2px 0px 10px;
+  display: flex ;
+  width: 60rem;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  /* max-height: 31rem; */
+  overflow-y:scroll ;
+  overflow-x: hidden;
+  /* border: 2px solid green; */
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgb(189, 183, 183) 1px, transparent 1px),
+    linear-gradient(to bottom, grey 1px, transparent 1px);
+}
+.white-square-grid-40px {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='%23ddd' /%3E%3Crect y='50%' width='100%' height='1' fill='%23ddd' /%3E%3C/svg%3E%0A");
+}
+
+.example-box {
+  width: 100vw;
+  height: 100px;
+}
+
+.b-border{
+  width: 15rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(209, 111, 12, 0.719);
+  outline: none;
+  /* margin-bottom: 30px; */
+  /* border: none; */
+}
+#searchQueryInput {
+  width: 100%;
+  height: 2.8rem;
+  background: transparent;
+  color: rgba(245, 245, 245, 0.765);
+  outline: none;
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+#searchQuerySubmit {
+  width: 3.5rem;
+  height: 2.8rem;
+  margin-left: -3.5rem;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#searchQuerySubmit:hover {
+  cursor: pointer;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +115,24 @@
     transform: rotate(360deg);
   }
 }
+.noteitem {
+  background: linear-gradient(-45deg, transparent 35px, #91f544 0)bottom left;
+}
+.article::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  background: rgb(201, 151, 90);
+  background: linear-gradient(-45deg, transparent 35px, #537e32 0)bottom right;
+}
+/* .article::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+} */
