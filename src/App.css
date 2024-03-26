@@ -38,6 +38,9 @@
   src: url("../src/fonts/coolvetica.otf");
   
 }
+.sidebar{
+  transform: translateX(-180px);
+}
 .wrapper {
   font-family: "Roboto", Arial, sans-serif;
   width: 14rem;
@@ -45,7 +48,7 @@
   /* margin: 0rem auto; */
 }
 .searchBar {
-  width: 15rem;
+  width: 10rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,8 +57,9 @@
 .box {
   margin: 2px 2px 0px 10px;
   display: flex ;
-  width: 60rem;
+  width: 42rem;
   flex-wrap: wrap;
+  /* height: 25rem; */
   /* justify-content: space-between; */
   /* max-height: 31rem; */
   overflow-y:scroll ;
@@ -76,7 +80,7 @@
 }
 
 .b-border{
-  width: 15rem;
+  width: 13rem;
   background: transparent;
   border-bottom: 1px solid rgba(209, 111, 12, 0.719);
   outline: none;
@@ -117,6 +121,9 @@
 }
 .noteitem {
   background: linear-gradient(-45deg, transparent 35px, #91f544 0)bottom left;
+}
+.spacing{
+  justify-content: space-between;
 }
 .article::after{
   content: "";

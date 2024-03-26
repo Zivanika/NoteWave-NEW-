@@ -1,13 +1,27 @@
 import React, { useContext,useEffect,useRef,useState} from 'react'
 import noteContext from "../context/notes/noteContext"
+import categoryContext from '../context/notes/categories/categoryContext';
 import Noteitem from './Noteitem';
 import AddNote from './AddNote';
-const Notes = () => {
+import { useNavigate } from 'react-router-dom';
+
+const Notes = (props) => {
+  const navigate=useNavigate();
   const[note,setNote]=useState({id:"",etitle:"",edescription:"",etag:""})
+  const searchkeyword=props.searchKeyword
     const context=useContext(noteContext);
-    const{notes,getNotes,editNote}=context;
+    const category = useContext(categoryContext)
+    let {notes,getNotes,editNote}=context;
+    let {filteredNotes}=category;
+
+
     useEffect(()=>{
-   getNotes()
+      if(localStorage.getItem('token')){
+        getNotes()
+      }
+      else{
+        navigate('/login')
+      }
     },[])
     const ref=useRef(null)
     const refClose=useRef(null)
@@ -17,6 +31,14 @@ const Notes = () => {
       ref.current.click()
       setNote({id:currentNote._id,etitle:currentNote.title,edescription:currentNote.description,etag:currentNote.tag});
       // refClose.current.click();
+    }
+
+    if (searchkeyword !=="") {
+      console.log(searchkeyword);
+      filteredNotes=notes.filter((note)=>
+        (note?.title && note?.title.toLowerCase().includes(searchkeyword.toLowerCase())) || 
+        (note?.description && note?.description.toLowerCase().includes(searchkeyword.toLowerCase()))
+      );
     }
 
 
@@ -65,13 +87,18 @@ const Notes = () => {
     </div>
   </div>
 </div>
-      <div className="row my-3 container max-w-[60rem] ">
+      <div className="row my-3 container max-w-[60rem]">
     {/* <h1>Your Notes</h1> */}
-    <div className="container">
-    {notes.length===0 && 'No notes to  display'}
-</div>
-    <div className="box  h-[32rem]">
-    {notes?.map((note)=>{
+    {/* <div className="container">
+    {filteredNotes.length===0 && 'No notes to  display'}
+</div> */}
+{/* <div className="container" style={{ height: filteredNotes.length === 0 ? '0' : 'auto' }}> */}
+  {/* {filteredNotes.length === 0 && 'No notes to display'} */}
+{/* </div> */}
+
+    <div className="box  h-[22rem]" >
+      {filteredNotes.length===0 && 'No notes to  display'}
+    {filteredNotes?.map((note)=>{
       return <div className='col-md-4' key={note._id}>
         <Noteitem updateNote={updateNote} note={note}/>
         </div>

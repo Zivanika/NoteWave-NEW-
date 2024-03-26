@@ -21,26 +21,27 @@ const AddNote = () => {
     }
   return (
     <div>
-       <div className="container py-6 px-4 mx-5 my-3 bg-[#f8ecd4] w-80 h-[32rem] rounded-md">
-    <h1 className='mx-20 font-semibold'>Add a note</h1>
+      {/* <QuickNote/> */}
+       <div className="container py-6 px-4 mx-2 my-3 bg-[#f8ecd4] w-64 h-[22rem] rounded-md">
+    <h1 className='mx-14 font-semibold'>Add a note</h1>
     <form className='my-3'>
   <div className="mb-4">
     <p></p>
     <p></p>
-    <input type="text"  placeholder="Title " className="b-border mb-1 text-3xl " id="title" value={note.title} name="title" onChange={onChange}/>
+    <input type="text"  placeholder="Title " className="b-border mb-1 text-xl " id="title" value={note.title} name="title" onChange={onChange}/>
     {/* <div id="emailHelp" className="form-text">W.</div> */}
   </div>
   <div className="mb-4">
   <p></p>
   <p></p>
-    <input type="text"  placeholder="Tag" className=" b-border mb-1 text-3xl" name="tag" value={note.tag} id="tag" onChange={onChange}/>
+    <input type="text"  placeholder="Tag" className=" b-border mb-1 text-xl" name="tag" value={note.tag} id="tag" onChange={onChange}/>
   </div>
   <div className="mb-4">
     <p></p>
     <p></p>
-    <textarea rows={6} className="b-border text-3xl"  placeholder="Description" name="description" value={note.description}  id="description" onChange={onChange}></textarea>
+    <textarea rows={3} className="b-border text-xl"  placeholder="Description" name="description" value={note.description}  id="description" onChange={onChange}></textarea>
   </div>
-  <button type="submit" className="w-72 h-10 -mx-2 text-center text-white font-semibold bg-orange-400 rounded-lg" onClick={handleClick}>Add Note</button>
+  <button type="submit" className="w-56 h-10 -mx-2 text-center text-white font-semibold bg-orange-400 rounded-lg" onClick={handleClick}>Add Note</button>
 </form>
     </div>
     </div>

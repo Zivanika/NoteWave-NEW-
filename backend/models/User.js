@@ -31,13 +31,13 @@ UserSchema.methods.comparePassword=async function(password){
     const result=bcrypt.compareSync(password,this.password);
     return result
 }
-UserSchema.pre("save", async function (next) {
-  if (this.isModified("password")) {
-    const hash = await bcrypt.hash(this.password, 10);
-    this.password = hash;
-  }
-next();
-});
+// UserSchema.pre("save", async function (next) {
+//   if (this.isModified("password")) {
+//     const hash = await bcrypt.hash(this.password, 10);
+//     this.password = hash;
+//   }
+// next();
+// });
 const User=mongoose.model('user',UserSchema);
 // User.createIndexes();
 module.exports=User
