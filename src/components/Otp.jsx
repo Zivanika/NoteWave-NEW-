@@ -1,6 +1,118 @@
 import React from 'react';
+import { useState,useRef,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './otp.css'
-const Otp = () => {
+import BarLoader from './BarLoader';
+const inputs = Array(4).fill(""); // create a blank array of 4 index
+let newInputIndex = 0;
+const baseURL = "https://localhost:5000";
+const Otp = (props) => {
+  const navigate = useNavigate();
+  const BoxRefs = useRef();
+  const inputRef = useRef(null);
+  const [OTP, setOTP] = useState({ 0: "", 1: "", 2: "",3:""});
+  const [busy, setBusy] = useState(false);
+  let [nextInputIndex, setNextInputIndex] = useState(0);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [nextInputIndex]);
+  const isObjValid = (obj) => {
+    let arr = Object.values(obj);
+    return arr.every((val) => val.trim());
+   };
+   const handleOTPChange = (value, index) => {
+    let newOTP = { ...OTP };
+    newOTP[index] = value;
+    setOTP(newOTP);
+
+    let lastInputIndex = inputs.length - 1;
+    if (!value) {
+      newInputIndex = index === 0 ? 0 : index - 1;
+    } else {
+      newInputIndex = index === lastInputIndex ? lastInputIndex : index + 1;
+    }
+
+    setNextInputIndex(newInputIndex);
+};
+const handleKeyDown = (e, index) => {
+  if (e.key === "Backspace") {
+    e.preventDefault();
+    handleOTPChange("", index);
+}
+};
+const CorrectOTP = () => {
+  const boxRefsChildren = BoxRefs.current.children;
+
+  // Loop through the children (input elements) and add the correct-otp class
+  for (let i = 0; i < boxRefsChildren.length; i++) {
+    const inputElement = boxRefsChildren[i];
+    if (inputElement) {
+      inputElement.classList.add('correct-otp');
+
+      // Remove the class after the animation duration (adjust as needed)
+      setTimeout(() => {
+        inputElement.classList.remove('correct-otp');
+      }, 2000);
+      }
+  }
+};
+const WrongOTP = () => {
+  const boxRefsChildren = BoxRefs.current.children;
+
+  // Loop through the children (input elements) and add the correct-otp class
+  for (let i = 0; i < boxRefsChildren.length; i++) {
+    const inputElement = boxRefsChildren[i];
+    if (inputElement) {
+      inputElement.classList.add('wrong-otp');
+      inputElement.classList.add('Shake');
+
+      // Remove the class after the animation duration (adjust as needed)
+      setTimeout(() => {
+        inputElement.classList.remove('wrong-otp');
+        inputElement.classList.remove('Shake');
+      }, 1200);
+      }
+  }
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (isObjValid(OTP)) {
+    var val = "";
+
+    Object.values(OTP).forEach((v) => {
+      val += v;
+    });
+    // Calling the verification function or API endpoint here
+    try {
+      setBusy(true);
+      const response = await fetch(`${baseURL}/verify-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ otp: val, UserID: props.ID }),
+      });
+      setBusy(false);
+      const json = await response.json();
+      if (json.success) {
+          CorrectOTP();
+          // dispatch(showMessage({ message: "E-mail verified successfully!", messageType: 'success' }));
+          setTimeout(() => {
+              navigate("/");
+          }, 1200);
+      } else {
+        // dispatch(showMessage({ message: json.error, messageType: 'error' }));
+
+      }
+    } catch (error) {
+      // dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
+      }
+      //   console.log("Entered OTP:", val);
+  } else {
+    // dispatch(showMessage({ message: "Please enter all 4 digits!", messageType: 'error' }));
+    WrongOTP();
+  }
+};
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',background: 'rgb(164, 247, 157)' }}>
       <div className='h-[65vh] w-[62vw] flex justify-center items-center' style={{borderRadius:"20px",boxShadow: "4px 4px 8px rgba(0.5, 0.5, 0.5, 0.5)"}}>
@@ -14,17 +126,29 @@ const Otp = () => {
                 <div className="titleotp ml-28">
                     Verify OTP
                 </div>
-                <form className='mt-10 ml-20'>
-              {/* <input type="text" placeholder="Enter OTP" />
-              <p></p>
-              <button type="submit">Submit</button> */}
-                <input class="otp mr-2" type="text" oninput='digitValidate(this)'onkeyup='tabChange (1)'/>
-                <input class="otp mr-2" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)'/>
-                <input class="otp mr-2" type="text" oninput='digitValidate(this)'onkeyup='tabChange(3)' />
-                <input class="otp mr-2" type="text" oninput='digitValidate(this) 'onkeyup='tabChange (4)' />
+                <form className='mt-10 ml-20' onSubmit={handleSubmit}>
+             
+                <div className="flex gap-4" ref={BoxRefs}>
+            {inputs.map((digit, index) => (
+              <input
+                className="rounded-lg h-10 w-10 text-[red] text-center font-semibold custom-input"
+                key={index}
+                type="text"
+                maxLength={1}
+                value={OTP[index]}
+                onChange={(e) => handleOTPChange(e.target.value, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                ref={nextInputIndex === index ? inputRef : null}
+
+
+              />
+            ))}
+         </div>
+             
             </form>
             <hr class="mt-4"/>
-           <button className='btn btn-block bg-green-600 mt-4 mb-4 ml-36'>Verify</button>
+            {busy && <BarLoader/>}
+           <button type="submit" className='btn btn-block bg-green-600 mt-4 mb-4 ml-36'>Verify</button>
             </div>
         </div>
        </div>

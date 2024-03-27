@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.css'
 import {useNavigate,Link} from 'react-router-dom';
-const Login = () => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({ name:"", email: "", password: "" });
   const [isLoginActive, setIsLoginActive] = useState(true);
   let navigate = useNavigate();
@@ -37,6 +37,7 @@ const Login = () => {
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
     });
     const json = await response.json();
+    props.setID(json.ID)
     console.log(json);
     if(json.success){
       // Save the authtoken and redirect

@@ -199,10 +199,9 @@ const PasswordResetTemplate = (url)=>{
     <div align="center" class="alignment">
     <table border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;" width="168px">
     <tr>
-    <td style="padding:0 5px 0 5px;"><a href="https://www.facebook.com/ekansh.jaiswal.796" target="_blank"><img alt="Facebook" height="32" src="cid:uniq-facebook.png" style="display: block; height: auto; border: 0;" title="Facebook" width="32"/></a></td>
-    <td style="padding:0 5px 0 5px;"><a href="https://wa.link/y7e6yz" target="_blank"><img alt="WhatsApp" height="32" src="cid:uniq-whatsapp.png" style="display: block; height: auto; border: 0;" title="WhatsApp" width="32"/></a></td>
-    <td style="padding:0 5px 0 5px;"><a href="https://www.instagram.com/scyp77/" target="_blank"><img alt="Instagram" height="32" src="cid:uniq-instagram.png" style="display: block; height: auto; border: 0;" title="Instagram" width="32"/></a></td>
-    <td style="padding:0 5px 0 5px;"><a href="https://www.linkedin.com/in/akshat-jaiswal-4664a2197/" target="_blank"><img alt="LinkedIn" height="32" src="cid:uniq-linkedin.png" style="display: block; height: auto; border: 0;" title="LinkedIn" width="32"/></a></td>
+    // <td style="padding:0 5px 0 5px;"><a href="https://wa.link/y7e6yz" target="_blank"><img alt="WhatsApp" height="32" src="cid:uniq-whatsapp.png" style="display: block; height: auto; border: 0;" title="WhatsApp" width="32"/></a></td>
+    <td style="padding:0 5px 0 5px;"><a href="https://www.instagram.com/harshitabarnwal009/" target="_blank"><img alt="Instagram" height="32" src="cid:uniq-instagram.png" style="display: block; height: auto; border: 0;" title="Instagram" width="32"/></a></td>
+    <td style="padding:0 5px 0 5px;"><a href="https://www.linkedin.com/in/harshita-barnwal-17a732234/" target="_blank"><img alt="LinkedIn" height="32" src="cid:uniq-linkedin.png" style="display: block; height: auto; border: 0;" title="LinkedIn" width="32"/></a></td>
     </tr>
     </table>
     </div>
@@ -220,9 +219,9 @@ const PasswordResetTemplate = (url)=>{
     <tr>
     <td class="pad">
     <div style="color:#C0C0C0;font-family:Tahoma,Verdana,Segoe,sans-serif;font-size:12px;line-height:120%;text-align:center;mso-line-height-alt:14.399999999999999px;">
-    <p style="margin: 0; word-break: break-word;">Thank you for choosing iNoteBook! Your security is our priority. If you did not request this password reset, please contact me immediately. Happy and secure notetaking!</p>
+    <p style="margin: 0; word-break: break-word;">Thank you for choosing NoteWave! Your security is our priority. If you did not request this password reset, please contact me immediately. Happy and secure notetaking!</p>
     <p style="margin: 0; word-break: break-word;"> </p>
-    <p style="margin: 0; word-break: break-word;">KP - 9c, KIIT UNIVERSITY /  zethyst@protonmail.com / (+91) 831 887 6136<a href="http://www.example.com" style=""></a></p>
+    <p style="margin: 0; word-break: break-word;">QC -1, KIIT UNIVERSITY /  harshitabarnwal2003@gmail.com / (+91) 9937468719<a href="http://www.example.com" style=""></a></p>
     <p style="margin: 0; word-break: break-word;"><span style="color: #c0c0c0;"> </span></p>
     </div>
     </td>

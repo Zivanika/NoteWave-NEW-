@@ -2,13 +2,44 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import BarLoader from './BarLoader';
+const baseURL = "http://localhost:5000/api/auth";
 const Forgotpass = () => {
     const navigate=useNavigate()
     const [email, setEmail] = useState('');
+    const [busy, setBusy] = useState(false);
     const handleOnChange = ({target})=>{
         const {value}=target;
         setEmail(value);
   }
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    try {
+        setBusy(true);
+        const response = await fetch(`${baseURL}/forgot-password`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({email})
+            // console.log(email)
+        });
+        const json = await response.json();
+
+        console.log(json.email)
+        setBusy(false);
+        if (json.success) {
+            //!Redirect
+            // dispatch(showMessage({ message: "E-mail sent successfully!", messageType: 'success' }));
+        }
+        else {
+            // dispatch(showMessage({ message: json.error, messageType: 'error' }));
+        }
+    } catch (error) {
+        // dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
+    }
+
+}
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',background:"rgb(164, 247, 157)" }}>
       <div className='h-[65vh] w-[65vw] flex justify-center items-center bg-green-400' style={{ borderRadius: "20px", boxShadow: "4px 4px 8px rgba(0.5, 0.5, 0.5, 0.5)", background: 'rgb(164, 247, 157)' }}>
@@ -25,11 +56,13 @@ const Forgotpass = () => {
                 <div className='text-md mt-2 ml-10'>
                 Enter your email to reset password!
                 </div>
-                <form className='mt-10 ml-2'>
+                <form className='mt-10 ml-2' onSubmit={handleSubmit}>
                     <div className="flex bg-slate-100 justify-center items-center pl-3" style={{boxShadow:"0px 3px 1px rgb(166 173 185)",borderRadius:"5px"}}><EmailOutlinedIcon/><input type="email" name="email"  onChange={handleOnChange} className="px-3 text-lg h-12 w-full border-none outline-none rounded-sm bg-slate-100" placeholder="example@email.com"/></div>
+                    <hr class="mt-4" />
+                    <button className='btn btn-block bg-green-600 mt-4 mb-4 ml-6 w-[27vw]' type="submit" >REQUEST PASSWORD RESET EMAIL</button>
                 </form>
-                <hr class="mt-4" />
-                <button className='btn btn-block bg-green-600 mt-4 mb-4 ml-6 w-[27vw]' onClick={()=>{navigate("/resetpass")}}>REQUEST PASSWORD RESET EMAIL</button>
+
+                
               </div>
             </div>
           </div>

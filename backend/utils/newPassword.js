@@ -26,7 +26,7 @@ const NewPasswordTemplate = ()=>{
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td style="font-family: 'Poppins', 'Sans-serif'; font-size: 30px; background-color: whitesmoke; color: gold; font-weight: 700; letter-spacing: 2px; width: 100%; text-align: center;">
-                <span style="color: #08349c;">i</span>NoteBook
+                NoteWave
               </td>
             </tr>
           </table>
@@ -62,7 +62,7 @@ const NewPasswordTemplate = ()=>{
           
           <table width="100%" cellpadding="0" cellspacing="0" border="0" style="padding: 0 10px;">
             <tr>
-              <td style="text-align: center; padding: 15px 0;">We want to inform you that your password has been successfully reset for your iNoteBook account. Your account security is our top priority, and we appreciate your prompt action in updating your password.</td>
+              <td style="text-align: center; padding: 15px 0;">We want to inform you that your password has been successfully reset for your NoteWave account. Your account security is our top priority, and we appreciate your prompt action in updating your password.</td>
             </tr>
             <tr>
               <td style="text-align: center; padding: 15px 0;">Now you can login with your new password!</td>
@@ -85,7 +85,7 @@ const NewPasswordTemplate = ()=>{
               <td style="text-align: center; padding: 15px 0;">Thanks,</td>
             </tr>
             <tr>
-              <td style="text-align: center; padding: 15px 0;">Akshat Jaiswal</td>
+              <td style="text-align: center; padding: 15px 0;">Harshita Barnwal</td>
             </tr>
           </table>
     
@@ -102,9 +102,7 @@ const NewPasswordTemplate = ()=>{
             <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                <a href="https://www.facebook.com/ekansh.jaiswal.796" title="Facebook" target="_blank">
-                  <img src="cid:uniq-image-5.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                </a>
+              
               </td></tr>
             </tbody></table>
             <!--[if (mso)|(IE)]></td><![endif]-->
@@ -112,7 +110,7 @@ const NewPasswordTemplate = ()=>{
             <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                <a href="https://www.linkedin.com/in/akshat-jaiswal-4664a2197/" title="LinkedIn" target="_blank">
+                <a href="https://www.linkedin.com/in/harshita-barnwal-17a732234/" title="LinkedIn" target="_blank">
                   <img src="cid:uniq-image-7.png" alt="LinkedIn" title="LinkedIn" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                 </a>
               </td></tr>
@@ -123,9 +121,7 @@ const NewPasswordTemplate = ()=>{
             <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
             <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
               <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-                <a href="https://www.snapchat.com/add/coldsmokr77?share_id=RGdXrP6xmF8&locale=en-GB&sid=11243de8f0764fc680d7d5678c836551" title="Snapchat" target="_blank">
-                  <img src="cid:uniq-image-8.png" alt="Snapchat" title="Snapchat" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-                </a>
+                
               </td></tr>
             </tbody></table>
             <!--[if (mso)|(IE)]></td><![endif]-->
@@ -142,7 +138,7 @@ const NewPasswordTemplate = ()=>{
 
       <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #08349c; color: white; text-align: center;">
         <tr>
-          <td style="padding: 15px 0;">Copyrights © iNoteBook All Rights Reserved</td>
+          <td style="padding: 15px 0;">Copyrights © NoteWave All Rights Reserved</td>
         </tr>
       </table>
       

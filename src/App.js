@@ -18,7 +18,10 @@ import Otp from './components/Otp';
 import Forgotpass from './components/Forgotpass';
 import ResetPass from './components/ResetPass';
 import Confirmpass from './components/Confirmpass';
+import { useState } from 'react';
+
 function App() {
+  const [ID, setID] = useState('');
   return (
     <>
     <NoteState>
@@ -27,11 +30,11 @@ function App() {
     <Routes>
     <Route exact path="/about" element={<Abouts/>}/>
     <Route exact path="/confirmpass" element={<Confirmpass/>}/>
-    <Route exact path="/resetpass" element={<ResetPass/>}/>
+    <Route exact path="/reset-password" element={<ResetPass/>}/>
     <Route exact path="/forgotpassword" element={<Forgotpass/>}/>
     <Route exact path="/" element={<Homes/>}/>
-    <Route exact path="/otp" element={<Otp/>}/>
-    <Route exact path="/login" element={<Login/>}/>
+    <Route exact path="/otp" element={<Otp ID={ID}/>}/>
+    <Route exact path="/login" element={<Login setID={setID}/>}/>
     {/* <Route exact path="/signup" element={<Signup/>}/> */}
     </Routes>
     </Router>

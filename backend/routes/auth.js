@@ -290,7 +290,7 @@ router.post("/forgot-password",async(req,res)=>{
             to: user.email, // list of receivers
             subject: "Reset Your NoteWave Password", // Subject line
             html: PasswordResetTemplate(
-                `http://localhost:5000/reset-password?token=${passwordToken}&id=${user._id}`
+                `http://localhost:5000/api/auth/reset-password?token=${passwordToken}&id=${user._id}`
             ),
             attachments: [
               {
@@ -329,7 +329,7 @@ router.post("/forgot-password",async(req,res)=>{
           res.json({
             success: true,
             message: "Password Reset Link is sent to your E-mail!",
-          });  //🌹🌹🌹🌹🌹🌹
+          });  
     }catch(error){
         console.log(error);
         res.status(500).json({error:"Internal server error"})
@@ -349,7 +349,8 @@ router.post('/reset-password',isResetPasswordValid,async(req,res)=>{
             return res.status(401).json({error:"Password must be atleast 5 characters long!"});
             // Check if the password contains at least 1 uppercase letter and 1 number
         }
-        const passwordRegex= /^(?=.*\d)/;
+        // const passwordRegex= /^(?=.*\d)/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)/;
         if(!passwordRegex.test(password.trim())){
             return res.status(401).json({error:"Password must contain at least 1 uppercase letter and 1 number!"})
         }
