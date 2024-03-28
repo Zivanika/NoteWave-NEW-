@@ -1,8 +1,11 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { showMessage } from "../../context/../store/reducers/notificationSlice";
 const NoteState=(props)=>{
     const host="http://localhost:5000"
     const[notes,setNotes]=useState([]);
+    const dispatch=useDispatch();
      // Get all notes
      const getNotes=async()=>{
         // TODO: API call
@@ -37,6 +40,7 @@ const NoteState=(props)=>{
           let note=await response.json();
          console.log(notes);
         setNotes(notes.concat(note))
+        // dispatch(showMessage({ message: "Note added successfully!", messageType: 'success' }));
         console.log(notes);
     }
 
@@ -56,6 +60,7 @@ const deleteNote=async(id)=>{
 // console.log("deleting note with id"+id);
 const newNotes=notes.filter((note)=>{return(note._id!==id)});
 setNotes(newNotes)
+dispatch(showMessage({ message: "Note deleted successfully!", messageType: 'success' }));
 }
 
 // Edit Note
@@ -81,6 +86,7 @@ if(newNotes[i]._id==id){
 }
 }
 setNotes(newNotes)
+dispatch(showMessage({ message: "Note updated successfully!", messageType: 'success' }));
 }
 
 

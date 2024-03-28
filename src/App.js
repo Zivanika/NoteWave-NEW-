@@ -32,19 +32,19 @@ function App() {
   const showToastMessage = (message, messageType) => {
     switch (messageType) {
       case 'success':
-        toast.success(message, { position: toast.POSITION.TOP_RIGHT });
+        toast.success(message);
         break;
       case 'error':
-        toast.error(message, { position: toast.POSITION.TOP_RIGHT });
+        toast.error(message);
         break;
       case 'warning':
-        toast.warning(message, { position: toast.POSITION.TOP_RIGHT });
+        toast.warning(message);
         break;
       default:
-        toast.info(message, { position: toast.POSITION.TOP_RIGHT });
-    }
-  };
-  
+        toast.info(message);
+}
+};
+  console.log(ID)
 
   React.useEffect(() => {
     if (message) {

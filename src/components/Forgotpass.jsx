@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import BarLoader from './BarLoader';
+import { useDispatch } from "react-redux";
+import { showMessage } from "../store/reducers/notificationSlice";
 const baseURL = "http://localhost:5000/api/auth";
 const Forgotpass = () => {
+    const dispatch = useDispatch();
     const navigate=useNavigate()
     const [email, setEmail] = useState('');
     const [busy, setBusy] = useState(false);
@@ -30,13 +33,13 @@ const Forgotpass = () => {
         setBusy(false);
         if (json.success) {
             //!Redirect
-            // dispatch(showMessage({ message: "E-mail sent successfully!", messageType: 'success' }));
+            dispatch(showMessage({ message: "E-mail sent successfully!", messageType: 'success' }));
         }
         else {
-            // dispatch(showMessage({ message: json.error, messageType: 'error' }));
+            dispatch(showMessage({ message: json.error, messageType: 'error' }));
         }
     } catch (error) {
-        // dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
+        dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
     }
 
 }

@@ -3,11 +3,14 @@ import { useState,useRef,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './otp.css'
 import BarLoader from './BarLoader';
+import { useDispatch } from "react-redux";
+import { showMessage } from "../store/reducers/notificationSlice";
 const inputs = Array(4).fill(""); // create a blank array of 4 index
 let newInputIndex = 0;
-const baseURL = "http://localhost:5000";
+const baseURL = "http://localhost:5000/api/auth";
 const Otp = (props) => {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const BoxRefs = useRef();
   const inputRef = useRef(null);
   const [OTP, setOTP] = useState({ 0: "", 1: "", 2: "",3:""});
@@ -91,25 +94,28 @@ const handleSubmit = async (e) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ otp: val, UserID: props.ID }),
-      });
+        // console.log(body);
+      }
+      );
       setBusy(false);
       const json = await response.json();
       if (json.success) {
           CorrectOTP();
-          // dispatch(showMessage({ message: "E-mail verified successfully!", messageType: 'success' }));
+          console.log(props.ID);
+          dispatch(showMessage({ message: "E-mail verified successfully!", messageType: 'success' }));
           setTimeout(() => {
               navigate("/");
           }, 1200);
       } else {
-        // dispatch(showMessage({ message: json.error, messageType: 'error' }));
+        dispatch(showMessage({ message: json.error, messageType: 'error' }));
 
       }
     } catch (error) {
-      // dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
+      dispatch(showMessage({ message: "Error Occured", messageType: 'error' }));
       }
       //   console.log("Entered OTP:", val);
   } else {
-    // dispatch(showMessage({ message: "Please enter all 4 digits!", messageType: 'error' }));
+    dispatch(showMessage({ message: "Please enter all 4 digits!", messageType: 'error' }));
     WrongOTP();
   }
 };
@@ -144,11 +150,11 @@ const handleSubmit = async (e) => {
               />
             ))}
          </div>
-             
-            </form>
-            <hr class="mt-4"/>
+         <hr class="mt-4"/>
             {busy && <BarLoader/>}
            <button type="submit" className='w-50 bg-green-600 mt-4 mb-4 ml-24' style={{borderRadius:"5px"}}>Verify</button>
+            </form>
+           
             </div>
         </div>
        </div>

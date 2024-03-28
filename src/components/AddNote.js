@@ -1,7 +1,9 @@
 import React,{useContext,useState} from 'react'
 import noteContext from "../context/notes/noteContext"
-
+import { useDispatch } from "react-redux";
+import { showMessage } from "../store/reducers/notificationSlice";
 const AddNote = () => {
+  const dispatch=useDispatch();
     const context=useContext(noteContext);
     const{addNote}=context;
     const[note,setNote]=useState({title:"",description:"",tag:""})
@@ -16,6 +18,7 @@ const AddNote = () => {
         
         addNote(note.title,note.description,note.tag)
        setNote({title:"",description:"",tag:""})
+       dispatch(showMessage({ message: "Note added successfully!", messageType: 'success' }));
     }
     const onChange=(e)=>{
           setNote({...note,[e.target.name]:e.target.value})   

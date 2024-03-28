@@ -8,10 +8,13 @@ import queryString from "query-string";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import { useDispatch } from "react-redux";
+import { showMessage } from "../store/reducers/notificationSlice";
 const baseURL = "http://localhost:5000/api/auth";
 const Resetpass = () => {
     const location = useLocation(); //because location has the pathname (url) and search paramenter which has the query
     const navigate = useNavigate();
+    const dispatch = useDispatch();
   const [invalidUser, setInvalidUser] = useState("");
   const [busy, setBusy] = useState(true);
   const [success, setSuccess] = useState(false);
@@ -23,17 +26,17 @@ const Resetpass = () => {
 
 const { token, id } = queryString.parse(location.search); //extracting ?token and id from url
 const verifyToken = async () => {
-    // dispatch(showMessage({ message: "Verifying Token", messageType: 'info' }));
+    dispatch(showMessage({ message: "Verifying Token", messageType: 'info' }));
     try {
       await axios(
         `${baseURL}/verify-token?token=${token}&id=${id}`
       );
      //?axios can be used in place of fetch and it uses get request
      setBusy(false);
-    //  dispatch(showMessage({ message: "Token verification successful!", messageType: 'success' }));
+     dispatch(showMessage({ message: "Token verification successful!", messageType: 'success' }));
     } catch (error) {
         setBusy(false);
-        // dispatch(showMessage({ message: 'An error occurred during token verification. Please try again.', messageType: 'error' }));
+        dispatch(showMessage({ message: 'An error occurred during token verification. Please try again.', messageType: 'error' }));
       if (error?.response?.data) {
         const {data}=error.response;
 
@@ -64,7 +67,7 @@ const handleSubmit = async (e)=>{
     }
     try {
         setBusy(true);
-        // dispatch(showMessage({ message: "Resetting...", messageType: 'info' }));
+        dispatch(showMessage({ message: "Resetting...", messageType: 'info' }));
         const { data } = await axios.post(
           `${baseURL}/reset-password?token=${token}&id=${id}`,{password}
         );
@@ -73,13 +76,13 @@ const handleSubmit = async (e)=>{
 
        if (data.success) {
            navigate("/reset-password");
-        //    dispatch(showMessage({ message: "Success", messageType: 'success' }));
+           dispatch(showMessage({ message: "Success", messageType: 'success' }));
            setSuccess(true);
        }
   
       } catch (error) {
         setBusy(false);
-        // dispatch(showMessage({ message: 'An error occurred during resetting password. Please try again.', messageType: 'error' }));
+        dispatch(showMessage({ message: 'An error occurred during resetting password. Please try again.', messageType: 'error' }));
         if (error?.response?.data) {
           const {data}=error.response;
   

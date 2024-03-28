@@ -58,31 +58,32 @@ const Notes = (props) => {
      <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
 <div className="modal fade" id="exampleModal" tabIndex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered">
-    <div className="modal-content">
+    <div className="modal-content " style={{"background": "rgb(195,101,34)",
+"background": "linear-gradient(0deg, rgba(195,101,34,1) 0%, rgba(253,187,45,1) 100%)"}}>
       <div className="modal-header">
-        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 className="modal-title fs-5 text-red-900" id="exampleModalLabel" style={{fontWeight:"bold"}}>Update your  Note</h1>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
       <form className='my-3'>
   <div className="mb-3">
-    <label htmlFor="etitle" className="form-label">Title</label>
+    <label htmlFor="etitle" className="form-label text-red-800">Title</label>
     <input type="text" className="form-control" id="etitle" name="etitle" onChange={onChange} minLength={5} value={note.etitle} required/>
     {/* <div id="emailHelp" className="form-text">W.</div> */}
   </div>
   <div className="mb-3">
-    <label htmlFor="edescription" className="form-label">Description</label>
+    <label htmlFor="edescription" className="form-label text-red-800">Description</label>
     <input type="text" className="form-control" name="edescription" id="edescription" minLength={5} onChange={onChange} value={note.edescription} required/>
   </div>
   <div className="mb-3">
-  <label htmlFor="etag" className="form-label">Tag</label>
+  <label htmlFor="etag" className="form-label text-red-800">Tag</label>
     <input type="text" className="form-control" name="etag" id="etag" onChange={onChange} minLength={5} value={note.etag} required/>
   </div>
 </form>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" ref={refClose} data-bs-dismiss="modal">Close</button>
-        <button type="button"  className="btn btn-primary" onClick={handleClick}>Update Note</button>
+        <button type="button" className="btn bg-red-900 text-yellow-50" ref={refClose} data-bs-dismiss="modal">Close</button>
+        <button type="button"  className="btn bg-yellow-300 text-red-900" onClick={handleClick}>Update Note</button>
       </div>
     </div>
   </div>
