@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './login.css'
 import {useNavigate,Link} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { showMessage } from "../store/reducers/notificationSlice";
 const Login = (props) => {
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({ name:"", email: "", password: "" });
   const [isLoginActive, setIsLoginActive] = useState(true);
   let navigate = useNavigate();
@@ -42,6 +45,7 @@ const Login = (props) => {
     if(json.success){
       // Save the authtoken and redirect
       localStorage.setItem('token',json.authtoken);
+      dispatch(showMessage({ message: "Otp sent successfully!", messageType: 'success' }));
       navigate("/otp");
     }
     else{

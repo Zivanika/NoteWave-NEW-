@@ -143,7 +143,7 @@ if (success) {
                     </div>
                 </form>
                 <hr class="mt-4" />
-                <button className='btn btn-block bg-green-600 mt-4 mb-4 ml-6 w-[27vw]' onClick={()=>{navigate("/confirmpass")}}>UPDATE</button>
+                <button className='btn btn-block bg-green-600 mt-4 mb-4 ml-6 w-[27vw]' >UPDATE</button>
               </div>
             </div>
           </div>

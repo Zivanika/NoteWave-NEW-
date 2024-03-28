@@ -5,7 +5,7 @@ import './otp.css'
 import BarLoader from './BarLoader';
 const inputs = Array(4).fill(""); // create a blank array of 4 index
 let newInputIndex = 0;
-const baseURL = "https://localhost:5000";
+const baseURL = "http://localhost:5000";
 const Otp = (props) => {
   const navigate = useNavigate();
   const BoxRefs = useRef();
@@ -148,7 +148,7 @@ const handleSubmit = async (e) => {
             </form>
             <hr class="mt-4"/>
             {busy && <BarLoader/>}
-           <button type="submit" className='btn btn-block bg-green-600 mt-4 mb-4 ml-36'>Verify</button>
+           <button type="submit" className='w-50 bg-green-600 mt-4 mb-4 ml-24' style={{borderRadius:"5px"}}>Verify</button>
             </div>
         </div>
        </div>
